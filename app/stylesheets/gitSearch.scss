@@ -1,0 +1,70 @@
+.searchWraper {
+	height: 120px;
+	background-color: #7b81ed;
+	margin-top: 74px;
+	left: 0;
+	right: 0;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.06), 0 2px 5px 0 rgba(0,0,0,0.2);
+
+	h4 {
+		font-family: 'Bree Serif', serif;
+		padding-top: 14px;
+		padding-left: 35%;
+		color: #fff;
+		font-size: 30px;
+	}
+}
+
+.searchPanel {
+	height: 100px;
+	background-color: #ebebeb;
+	width: 822px;
+	margin-left: 20%;
+	margin-right: 20%;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.06), 0 2px 5px 0 rgba(0,0,0,0.2);
+}
+
+.searchField {
+	border: solid 1px #d2d2d2;
+	border-radius: 5px;
+	font-family: 'Bree Serif', serif;
+	font-size: 20px;
+	height: 40px;
+	width: 600px;
+	color: #2a3744;
+	background-color: #fefefe;
+	margin-top: 25px;
+	margin-left: 10px;
+	display: inline-block;
+}
+
+.searchButton {
+	font-size: 20px;
+	font-family: 'Bree Serif', serif;
+	background-color: #000;
+	color: white;
+	width: 150px;
+	border: none;
+	line-height: 36px;
+	display: inline-block;
+	line-height: 36px;
+	margin-top: 25px;
+	margin-left: 10px;
+	box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px rgba(0,0,0,0.9);
+	cursor: pointer;
+}
+
+.searchPanel_radioGroup {
+	margin-left: 25%;
+	margin-top: 10px;
+	display: inline-block;
+
+	input {
+		cursor: pointer;
+	}
+}
+
+.radioGroup_user {
+	margin-right: 75px;
+	font-size: 15px;
+}
