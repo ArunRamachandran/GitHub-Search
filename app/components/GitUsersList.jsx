@@ -15,7 +15,7 @@ export default class GitUsersList extends Component {
 			return (
 				<div className="userList" key={index}>
 					<img src={user.avatar_url}/>
-					<h4 onClick={() => {this.props.fetchGitRepositories(user.repos_url)}}>{user.login}</h4>
+					<h4 onClick={() => {this.props.fetchUserRepository(user.repos_url)}}>{user.login}</h4>
 				</div>
 			);
 		});
@@ -24,7 +24,7 @@ export default class GitUsersList extends Component {
 
 	render () {
 		return (
-			<div className="gitUsersList_outerLayer">
+			<div className="gitUsersList_container">
 				{this.createView(this.props.data)}
 			</div>
 		);

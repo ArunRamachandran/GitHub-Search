@@ -11,11 +11,14 @@ let AppConstants = {
 
 	ACTIONS_CONSTANT: keyMirror({
 		LOAD_GIT_USERS: null,
-		LOAD_GIT_USER_REPOS: null
+		LOAD_GIT_USER_REPOS: null,
+		LOAD_GIT_REPOS: null
 	}),
 
 	EVENT_CONSTANT: keyMirror({
-		GIT_USERS_LOADED: null
+		GIT_USERS_LOADED: null,
+		GIT_USER_REPOS_LOADED: null,
+		GIT_REPOS_LOADED: null
 	})
 
 }

@@ -4,8 +4,8 @@ import React, {Component} from 'react';
 import GitSearch from './GitSearch.jsx';
 import Header from './Header.jsx';
 import GitUsersList from './GitUsersList.jsx';
-//import GitRepositoryList from './GitRepositoryList';
-import {searchGitUser, searchGitRepository, fetchGitRepositories} from '../actions/GitActionCreator';
+import GitRepositoryList from './GitRepositoryList.jsx';
+import {searchGitUser, searchGitRepository, fetchUserRepository} from '../actions/GitActionCreator';
 import gitStore from '../stores/gitStore';
 import AppConstants from '../constant/Constants';
 import '../stylesheets/appContainer.scss';
@@ -30,11 +30,13 @@ export default class AppContainer extends Component {
 	componentDidMount() {
 		gitStore.addChangeListner(EVENT_CONSTANT.GIT_USERS_LOADED, this.updateGitUsersList);
 		gitStore.addChangeListner(EVENT_CONSTANT.GIT_USER_REPOS_LOADED, this.updateGitUserRepositories);
+		gitStore.addChangeListner(EVENT_CONSTANT.GIT_REPOS_LOADED, this.updateGitRepositories);
 	}
 
 	componentWillUnMount() {
 		gitStore.removeChangeListner(EVENT_CONSTANT.GIT_USERS_LOADED, this.updateGitUsersList);
 		gitStore.removeChangeListner(EVENT_CONSTANT.GIT_USER_REPOS_LOADED, this.updateGitUserRepositories);
+		gitStore.removeChangeListner(EVENT_CONSTANT.GIT_REPOS_LOADED, this.updateGitRepositories);
 	}
 
 	/** TODO : Write function for updating repositories of a git user **/
@@ -44,8 +46,12 @@ export default class AppContainer extends Component {
 	}
 
 	updateGitUserRepositories = (data) => {
-		console.log("repos : ", data);
 		this.setState({ isLoader: false, gitData: data });
+	}
+
+	updateGitRepositories = (data) => {
+		console.log("repos : ", data);
+		this.setState({ isLoader: false, gitData: data.items });
 	}
 
 	searchData = (keyword, option) => {
@@ -66,19 +72,19 @@ export default class AppContainer extends Component {
 		}
 	}
 
-	fetchGitRepositories = (url) => {
+	fetchUserRepository = (url) => {
 		this.setState({ isLoader: true, contentType: "Repository" });
-		fetchGitRepositories(url);
+		fetchUserRepository(url);
 	}
 
 	createComponent = (type, data) => {
 		switch(type) {
 			case "User":
-				return <GitUsersList data={data} fetchGitRepositories={this.fetchGitRepositories}/>;
+				return <GitUsersList data={data} fetchUserRepository={this.fetchUserRepository}/>;
 				break;
 
 			case "Repository":
-				//return <GitRepositoryList data={data}/>
+				return <GitRepositoryList data={data}/>
 				break;
 
 			default:
@@ -100,7 +106,7 @@ export default class AppContainer extends Component {
 			<div className="componentWrapper">
 				<Header/>
 				<GitSearch searchData={this.searchData}/>
-				<div className="appContainer_dataWraper">
+				<div>
 					{children}
 				</div>
 			</div>

@@ -1,7 +1,8 @@
-use strict'
+'use strict'
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import '../stylesheets/gitRepositoryList.scss';
 
 export default class GitRepositoryList extends Component {
 
@@ -11,23 +12,24 @@ export default class GitRepositoryList extends Component {
 
 	createRepositoryList = (data) => {
 		let repositories = data.map((repo, index) => {
-
-			
-
+			let createdDate = new Date(repo.created_at).toDateString();
 			return (
-				<div>
+				<div className="repositoryList">
 					<img src="./app/assets/git_repo.png"/>
-					<h5>{repo.name}</h5>
-					<p></p>
+					<p className="repositoryName">{repo.name}</p>
+					<p className="repo_createdAt">created at : {createdDate}</p>
+					<p className="repo_language">language : {repo.language}</p>
 				</div>
 			);
-		})
+		});
+
+		return repositories;
 	}
 
 	render() {
 		return (
-			<div>
-				{/*this.createRepositoryList(this.props.data)*/}
+			<div className="gitRepositoryList_container">
+				{this.createRepositoryList(this.props.data)}
 			</div>
 		);
 	}

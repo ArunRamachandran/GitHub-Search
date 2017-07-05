@@ -13,8 +13,12 @@ export function searchGitUser(keyword) {
 	gitAPI.searchGitUser(keyword);
 }
 
-export function fetchGitRepositories(url) {
-	gitAPI.fetchGitRepositories(url);
+export function searchGitRepository(keyword) {
+	gitAPI.searchGitRepository(keyword);
+}
+
+export function fetchUserRepository(url) {
+	gitAPI.fetchUserRepository(url);
 }
 
 export function gitUsersList(list) {
@@ -29,4 +33,11 @@ export function gitUserRepositoryList(repositories) {
 		type: ACTIONS_CONSTANT.LOAD_GIT_USER_REPOS,
 		data: repositories
 	})
+}
+
+export function gitRepositoryList(repositories) {
+	AppDispatcher.dispatch({
+		type: ACTIONS_CONSTANT.LOAD_GIT_REPOS,
+		data: repositories
+	});
 }

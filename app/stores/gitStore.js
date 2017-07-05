@@ -31,6 +31,10 @@ function updateGitUsersList(data) {
 	_gitUsersList = data;
 }
 
+function updateGitRepositoryList(data) {
+	_gitReposiotryList = data;
+}
+
 gitStore.dispatchToken = dispatcher.register (action => {
 
 	switch(action.type) {
@@ -42,6 +46,11 @@ gitStore.dispatchToken = dispatcher.register (action => {
 			case ACTIONS_CONSTANT.LOAD_GIT_USER_REPOS:
 				updateUserRepositoryList(action.data);
 				gitStore.emitChange(EVENT_CONSTANT.GIT_USER_REPOS_LOADED, action.data);
+				break;
+
+			case ACTIONS_CONSTANT.LOAD_GIT_REPOS:
+				updateGitRepositoryList(action.data);
+				gitStore.emitChange(EVENT_CONSTANT.GIT_REPOS_LOADED, action.data);
 				break;
 		}
 

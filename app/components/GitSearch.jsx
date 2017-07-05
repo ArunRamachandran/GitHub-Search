@@ -21,13 +21,13 @@ export default class GitSearch extends Component {
 
 	inputHandler = (event) => {
 		this.refs.searchText.value && this.props.searchData(this.refs.searchText.value, this.state.option);
-		this.refs.searchText.value = '';
+		//this.refs.searchText.value = '';
 	}
 
 	searchHandler = (event) => {
 		if (event.key === 'Enter') {
 			this.refs.searchText.value && this.props.searchData(this.refs.searchText.value, this.state.option);
-			this.refs.searchText.value = '';
+			//this.refs.searchText.value = '';
 		}
 	}
 
