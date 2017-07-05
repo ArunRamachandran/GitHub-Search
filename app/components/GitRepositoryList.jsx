@@ -16,7 +16,9 @@ export default class GitRepositoryList extends Component {
 			return (
 				<div className="repositoryList">
 					<img src="./app/assets/git_repo.png"/>
-					<p className="repositoryName">{repo.name}</p>
+					<p className="repositoryName" onClick={() => {this.props.fetchRepositoryOpenIssues(repo.owner.login, repo.name)}}>
+						{repo.name}
+					</p>
 					<p className="repo_createdAt">created at : {createdDate}</p>
 					<p className="repo_language">language : {repo.language}</p>
 				</div>

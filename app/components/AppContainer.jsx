@@ -5,7 +5,8 @@ import GitSearch from './GitSearch.jsx';
 import Header from './Header.jsx';
 import GitUsersList from './GitUsersList.jsx';
 import GitRepositoryList from './GitRepositoryList.jsx';
-import {searchGitUser, searchGitRepository, fetchUserRepository} from '../actions/GitActionCreator';
+import RepositoryOpenIssues from './RepositoryOpenIssues.jsx';
+import {searchGitUser, searchGitRepository, fetchUserRepository, fetchRepositoryOpenIssues} from '../actions/GitActionCreator';
 import gitStore from '../stores/gitStore';
 import AppConstants from '../constant/Constants';
 import '../stylesheets/appContainer.scss';
@@ -31,12 +32,14 @@ export default class AppContainer extends Component {
 		gitStore.addChangeListner(EVENT_CONSTANT.GIT_USERS_LOADED, this.updateGitUsersList);
 		gitStore.addChangeListner(EVENT_CONSTANT.GIT_USER_REPOS_LOADED, this.updateGitUserRepositories);
 		gitStore.addChangeListner(EVENT_CONSTANT.GIT_REPOS_LOADED, this.updateGitRepositories);
+		gitStore.addChangeListner(EVENT_CONSTANT.OPEN_ISSUES_RECEIVED, this.updateRepositoryOpenIssues);
 	}
 
 	componentWillUnMount() {
 		gitStore.removeChangeListner(EVENT_CONSTANT.GIT_USERS_LOADED, this.updateGitUsersList);
 		gitStore.removeChangeListner(EVENT_CONSTANT.GIT_USER_REPOS_LOADED, this.updateGitUserRepositories);
 		gitStore.removeChangeListner(EVENT_CONSTANT.GIT_REPOS_LOADED, this.updateGitRepositories);
+		gitStore.removeChangeListner(EVENT_CONSTANT.OPEN_ISSUES_RECEIVED, this.updateRepositoryOpenIssues);
 	}
 
 	/** TODO : Write function for updating repositories of a git user **/
@@ -50,8 +53,13 @@ export default class AppContainer extends Component {
 	}
 
 	updateGitRepositories = (data) => {
-		console.log("repos : ", data);
+		//console.log("repos : ", data);
 		this.setState({ isLoader: false, gitData: data.items });
+	}
+
+	updateRepositoryOpenIssues = (data) => {
+		console.log("open issues : ", data);
+		this.setState({ isLoader: false, gitData: data });
 	}
 
 	searchData = (keyword, option) => {
@@ -72,6 +80,11 @@ export default class AppContainer extends Component {
 		}
 	}
 
+	fetchRepositoryOpenIssues = (userName, repository) => {
+		this.setState({ isLoader: true, contentType: "OpenIssues" });
+		fetchRepositoryOpenIssues(userName, repository);
+	}
+
 	fetchUserRepository = (url) => {
 		this.setState({ isLoader: true, contentType: "Repository" });
 		fetchUserRepository(url);
@@ -84,7 +97,11 @@ export default class AppContainer extends Component {
 				break;
 
 			case "Repository":
-				return <GitRepositoryList data={data}/>
+				return <GitRepositoryList data={data} fetchRepositoryOpenIssues={this.fetchRepositoryOpenIssues}/>
+				break;
+
+			case "OpenIssues":
+				return <RepositoryOpenIssues data={data}/>
 				break;
 
 			default:

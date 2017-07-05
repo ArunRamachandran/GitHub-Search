@@ -18,7 +18,8 @@ let AppConstants = {
 	EVENT_CONSTANT: keyMirror({
 		GIT_USERS_LOADED: null,
 		GIT_USER_REPOS_LOADED: null,
-		GIT_REPOS_LOADED: null
+		GIT_REPOS_LOADED: null,
+		OPEN_ISSUES_RECEIVED: null
 	})
 
 }

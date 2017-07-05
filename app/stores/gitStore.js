@@ -14,7 +14,8 @@ const {
 
 let _gitUsersList = [],
 	 _gitReposiotryList = [],
-	 _userRepositoryList = [];
+	 _userRepositoryList = [],
+	 _repositoryOpenIssues = [];
 
 
 const gitStore = createStore({
@@ -22,6 +23,10 @@ const gitStore = createStore({
 		return _gitUsersList;
 	}
 })
+
+function updateGitOpenIssuesList(openIssues) {
+	_repositoryOpenIssues = openIssues;
+}
 
 function updateUserRepositoryList(data) {
 	_userRepositoryList = data;
@@ -51,6 +56,11 @@ gitStore.dispatchToken = dispatcher.register (action => {
 			case ACTIONS_CONSTANT.LOAD_GIT_REPOS:
 				updateGitRepositoryList(action.data);
 				gitStore.emitChange(EVENT_CONSTANT.GIT_REPOS_LOADED, action.data);
+				break;
+
+			case ACTIONS_CONSTANT.LOAD_REPO_OPEN_ISSUES:
+				updateGitOpenIssuesList(action.data);
+				gitStore.emitChange(EVENT_CONSTANT.OPEN_ISSUES_RECEIVED, action.data);
 				break;
 		}
 

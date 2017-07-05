@@ -21,6 +21,10 @@ export function fetchUserRepository(url) {
 	gitAPI.fetchUserRepository(url);
 }
 
+export function fetchRepositoryOpenIssues(userName, repository) {
+	gitAPI.fetchRepositoryOpenIssues(userName, repository);
+}
+
 export function gitUsersList(list) {
 	AppDispatcher.dispatch({
 		type: ACTIONS_CONSTANT.LOAD_GIT_USERS,
@@ -40,4 +44,11 @@ export function gitRepositoryList(repositories) {
 		type: ACTIONS_CONSTANT.LOAD_GIT_REPOS,
 		data: repositories
 	});
+}
+
+export function gitOpenIssuesList(openIssuesList) {
+	AppDispatcher.dispatch({
+		type: ACTIONS_CONSTANT.LOAD_REPO_OPEN_ISSUES,
+		data: openIssuesList
+	})
 }
