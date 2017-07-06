@@ -1,0 +1,63 @@
+.openIssues_container {
+	margin-left: 23%;
+  margin-top: 5%;
+}
+
+.openIssues_actionBar {
+	width: 700px;
+	height: 50px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+  background-color: #fff;
+
+  h5 {
+  	font-family: 'Bree Serif', serif; 
+  	font-size: 19px;
+  	padding-top: 15px;
+  	padding-left: 15px;
+  }
+}
+
+.openIssuesList {
+	width: 700px;
+  margin-top: 27px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+  border-top: solid 3px;
+  border-top-color: #4cb74c;
+  background-color: #fff;
+}
+
+.openIssue_img {
+	height: 80px;
+  display: inline-block;
+  float: left;
+  margin-left: 20px;
+}
+
+.openIssue_title {
+	font-family: 'Bree Serif', serif;  	
+	padding-left: 20px;
+	cursor: pointer;
+	font-size: 19px;
+}
+
+.issue_number {
+	display: inline-block;
+	margin-top: 5px;
+	margin-bottom: 0;
+  margin-left: 5px;
+}
+
+.issues_created_date {
+	display: inline-block;
+	margin-bottom: 0;
+	margin-left: 10px;
+}
+
+.issue_opened_by {
+	display: inline-block;
+	margin-left: 10px;
+}
