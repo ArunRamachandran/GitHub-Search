@@ -61,3 +61,23 @@
 	display: inline-block;
 	margin-left: 10px;
 }
+
+
+.repositoryWarningLayout {
+  margin-left: 15%;
+  max-width: 500px;
+  height: 150px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+  background-color: #fff;
+
+  img {
+    height: 80px;
+    padding-left: 130px;
+  }
+
+  h5 {
+    font-family: 'Bree Serif', serif; 
+    padding-left: 10px;
+  }
+}

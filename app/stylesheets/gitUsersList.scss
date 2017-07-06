@@ -5,26 +5,45 @@
 }
 
 .userList {	
-    width: 700px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
-    background-color: #fff;
+  width: 700px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+  background-color: #fff;
 
-    img {    	
-	    height: 100px;
-	    display: inline-block;
-    }
+  img {    	
+    height: 100px;
+    display: inline-block;
+  }
 
-    h4 {  
-    	font-family: 'Bree Serif', serif;  	
-    	display: inline-block;
-    	padding-left: 20px;
-    	cursor: pointer;
-    }
+  h4 {  
+  	font-family: 'Bree Serif', serif;  	
+  	display: inline-block;
+  	padding-left: 20px;
+  	cursor: pointer;
+  }
 
-    h4:hover {
-    	color: #7b81ed;
-    }
+  h4:hover {
+  	color: #7b81ed;
+  }
+}
+
+.warningLayout {
+  margin-left: 15%;
+  max-width: 500px;
+  height: 150px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+  background-color: #fff;
+
+  img {
+    height: 80px;
+    padding-left: 130px;
+  }
+
+  h5 {
+    font-family: 'Bree Serif', serif; 
+    padding-left: 100px;
+  }
 }

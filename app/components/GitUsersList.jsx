@@ -9,6 +9,15 @@ export default class GitUsersList extends Component {
 		super(props);
 	}
 
+	createEmptyView = () => {
+		return (
+			<div className="warningLayout">
+				<img src="./app/assets/issue-opened.png"/>
+				<h5>Sorry, no data found</h5>
+			</div>
+		);
+	}
+
 	createView = (data) => {
 		console.log("data : ", data);
 		let items = data.items && data.items.map((user, index) => {
@@ -23,9 +32,12 @@ export default class GitUsersList extends Component {
 	}
 
 	render () {
+
+		const {data} = this.props;
+
 		return (
 			<div className="gitUsersList_container">
-				{this.createView(this.props.data)}
+				{data.total_count ? this.createView(data) : this.createEmptyView()}
 			</div>
 		);
 	}

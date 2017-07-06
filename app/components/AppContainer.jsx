@@ -6,6 +6,7 @@ import Header from './Header.jsx';
 import GitUsersList from './GitUsersList.jsx';
 import GitRepositoryList from './GitRepositoryList.jsx';
 import RepositoryOpenIssues from './RepositoryOpenIssues.jsx';
+import Loader from './Loader.jsx';
 import {searchGitUser, searchGitRepository, fetchUserRepository, fetchRepositoryOpenIssues} from '../actions/GitActionCreator';
 import gitStore from '../stores/gitStore';
 import AppConstants from '../constant/Constants';
@@ -53,12 +54,10 @@ export default class AppContainer extends Component {
 	}
 
 	updateGitRepositories = (data) => {
-		//console.log("repos : ", data);
 		this.setState({ isLoader: false, gitData: data.items });
 	}
 
 	updateRepositoryOpenIssues = (data) => {
-		console.log("open issues : ", data);
 		this.setState({ isLoader: false, gitData: data });
 	}
 
@@ -117,7 +116,7 @@ export default class AppContainer extends Component {
 			gitData
 		} = this.state;
 
-		let children = isLoader ? <h3>Loading</h3> : this.createComponent(contentType, gitData);
+		let children = isLoader ? <Loader/> : this.createComponent(contentType, gitData);
 
 		return (
 			<div className="componentWrapper">

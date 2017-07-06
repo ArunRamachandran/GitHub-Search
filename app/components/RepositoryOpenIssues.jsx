@@ -16,6 +16,15 @@ export default class RepositoryOpenIssues extends Component {
 		return Math.round(Math.abs((today.getTime() - createdDate.getTime())/ (24*60*60*1000)));
 	}
 
+	createEmptyView = () => {
+		return (
+			<div className="repositoryWarningLayout">
+				<img src="./app/assets/issue-opened.png"/>
+				<h5>There are no open issues associated with this repository</h5>
+			</div>
+		);
+	}
+
 	createItems = (data) => {
 		let openIssues = data.map((issue, index) => {	
 
@@ -35,12 +44,17 @@ export default class RepositoryOpenIssues extends Component {
 	}
 
 	render() {
+		const { data } = this.props;
+
 		return (
 			<div className="openIssues_container">
-				<div className="openIssues_actionBar">
-					<h5>Open issues</h5>
-				</div>
-				{this.createItems(this.props.data)}
+				{data.length ?
+					<div className="openIssues_actionBar">
+						<h5>Open issues</h5>
+					</div>
+					: <noscript/>
+				}
+				{data.length ? this.createItems(data) : this.createEmptyView()}
 			</div>
 		);
 	}
